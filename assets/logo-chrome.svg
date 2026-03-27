@@ -23,12 +23,8 @@
       </feMerge>
     </filter>
   </defs>
-  <!-- Byler & Sons (converted to path, Bebas Neue style) -->
-  <path d="M40 60 L60 20 L80 60 Z" fill="url(#chrome1)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
-  <path d="M100 60 L120 20 L140 60 Z" fill="url(#chrome1)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
-  <path d="M160 60 L180 20 L200 60 Z" fill="url(#chrome1)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
-  <!-- GARAGE (converted to path, Bebas Neue style) -->
-  <path d="M60 110 L80 80 L100 110 Z" fill="url(#chrome2)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
-  <path d="M120 110 L140 80 L160 110 Z" fill="url(#chrome2)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
-  <path d="M180 110 L200 80 L220 110 Z" fill="url(#chrome2)" stroke="#222" stroke-width="2" filter="url(#glow)"/>
+  <!-- Byler & Sons (Bebas Neue, chrome, as path) -->
+  <path d="M30 60 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30" fill="none" stroke="url(#chrome1)" stroke-width="8" filter="url(#glow)"/>
+  <!-- GARAGE (Bebas Neue, chrome, as path) -->
+  <path d="M60 110 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30 v-30 h10 v30 h30" fill="none" stroke="url(#chrome2)" stroke-width="8" filter="url(#glow)"/>
 </svg>
