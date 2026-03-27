@@ -1,0 +1,5 @@
+<!-- Hot Rod Pinstripe SVG Accent -->
+<svg width="220" height="32" viewBox="0 0 220 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 16 Q110 0 210 16 Q110 32 10 16 Z" fill="none" stroke="#FF007F" stroke-width="3"/>
+  <path d="M30 16 Q110 8 190 16 Q110 24 30 16 Z" fill="none" stroke="#fff" stroke-width="1.5"/>
+</svg>
