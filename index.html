@@ -11,49 +11,53 @@
   <style>
     .font-pacifico { font-family: 'Pacifico', cursive; }
     .font-bebas { font-family: 'Bebas Neue', Arial, sans-serif; letter-spacing: 0.1em; }
-    .hotrod-shadow { text-shadow: 0 2px 16px #FF007F, 0 1px 0 #fff; }
+    .hotrod-shadow { text-shadow: 0 2px 20px rgba(126, 34, 206, 0.6); }
+    .text-dull-purple { color: #7e22ce; }
+    .border-dull-purple { border-color: #7e22ce; }
+    .bg-accent-red { background-color: #DC2626; }
+    .hover-accent-red:hover { background-color: #B91C1C; }
   </style>
 </head>
 <body class="bg-neutral-900 text-gray-100">
   <!-- Sidebar Layout -->
   <div class="min-h-screen flex flex-row bg-neutral-900">
     <!-- Sidebar -->
-    <aside class="w-80 bg-neutral-950 flex flex-col items-start py-8 px-6 shadow-2xl min-h-screen border-r-4 border-pink-600">
+    <aside class="w-80 bg-neutral-950 flex flex-col items-start py-8 px-6 shadow-2xl min-h-screen border-r-4 border-dull-purple">
       <div class="mb-8 w-full flex flex-col items-center">
         <img src="assets/bylerandsons.png" alt="Byler & Sons Garage Logo" class="max-w-[220px] w-full h-auto drop-shadow-2xl mt-2" />
       </div>
       <nav class="w-full">
         <ul class="flex flex-col space-y-4 items-start">
-          <li><a href="#home" class="font-bebas text-xl hover:text-pink-400 transition-colors">Home</a></li>
-          <li><a href="#schedule" class="font-bebas text-xl hover:text-pink-400 transition-colors">Schedule Now</a></li>
-          <li><a href="#prices" class="font-bebas text-xl hover:text-pink-400 transition-colors">Prices</a></li>
-          <li><a href="#about" class="font-bebas text-xl hover:text-pink-400 transition-colors">About Us</a></li>
-          <li><a href="#contact" class="font-bebas text-xl hover:text-pink-400 transition-colors">Contact Us</a></li>
+          <li><a href="#home" class="font-bebas text-xl hover:text-dull-purple transition-colors">Home</a></li>
+          <li><a href="#schedule" class="font-bebas text-xl hover:text-dull-purple transition-colors">Schedule Now</a></li>
+          <li><a href="#prices" class="font-bebas text-xl hover:text-dull-purple transition-colors">Prices</a></li>
+          <li><a href="#about" class="font-bebas text-xl hover:text-dull-purple transition-colors">About Us</a></li>
+          <li><a href="#contact" class="font-bebas text-xl hover:text-dull-purple transition-colors">Contact Us</a></li>
         </ul>
       </nav>
       <div class="mt-12 text-left text-gray-300 text-sm">
         <div>671 Hill Church Road<br>Hummelstown, PA 176036</div>
-        <div class="mt-2">Phone: <a href="tel:717-503-5255" class="text-pink-400 font-bold">717-503-5255</a></div>
+        <div class="mt-2">Phone: <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a></div>
       </div>
     </aside>
     <!-- Main Content -->
-    <main class="flex-1 bg-gradient-to-br from-neutral-900 via-neutral-950 to-pink-950 min-h-screen">
+    <main class="flex-1 bg-gradient-to-br from-neutral-900 via-neutral-950 to-purple-950 min-h-screen">
 
   <!-- Hero Section -->
-      <section id="home" class="relative h-96 flex items-center justify-center bg-neutral-900 border-b-4 border-pink-600 shadow-xl">
-        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-pink-950 opacity-80"></div>
+      <section id="home" class="relative h-96 flex items-center justify-center bg-neutral-900 border-b-4 border-dull-purple shadow-xl">
+        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-purple-950 opacity-80"></div>
         <div class="relative z-10 text-center">
-          <h1 class="text-5xl md:text-6xl font-pacifico hotrod-shadow mb-4 text-pink-500">Welcome to Byler & Sons Garage</h1>
-          <p class="text-xl md:text-2xl mb-6 text-gray-200 font-bebas tracking-wider">Rent a bay. Work on your project. Simple, affordable, local.</p>
-          <a href="#schedule" class="inline-block bg-pink-600 text-white px-8 py-4 rounded-full shadow-lg hover:bg-pink-700 font-bebas text-xl tracking-widest transition-all">Schedule Now</a>
+          <h1 class="text-5xl md:text-6xl font-pacifico hotrod-shadow mb-4 text-dull-purple">Welcome to Byler & Sons Garage</h1>
+          <p class="text-xl md:text-2xl mb-6 text-gray-400 font-bebas tracking-wider">Rent a bay. Work on your project. Simple, affordable, local.</p>
+          <a href="#schedule" class="inline-block bg-accent-red hover-accent-red text-white px-8 py-4 rounded-full shadow-lg font-bebas text-xl tracking-widest transition-all">Schedule Now</a>
         </div>
       </section>
 
   <!-- Schedule Now Section -->
       <section id="schedule" class="py-16 bg-neutral-900">
         <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-pink-400 mb-4 hotrod-shadow">Schedule a Bay</h2>
-          <p class="mb-6 font-bebas text-lg">Call us at <a href="tel:717-503-5255" class="text-pink-400 font-bold">717-503-5255</a> to reserve your spot!</p>
+          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Schedule a Bay</h2>
+          <p class="mb-6 font-bebas text-lg">Call us at <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a> to reserve your spot!</p>
           <!-- Placeholder for future calendar/booking widget -->
           <div class="mt-8 text-gray-500 italic">Online booking coming soon!</div>
         </div>
@@ -62,9 +66,9 @@
   <!-- Prices Section -->
       <section id="prices" class="py-16 bg-neutral-950">
         <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-pink-400 mb-4 hotrod-shadow">Prices</h2>
+          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Prices</h2>
           <ul class="max-w-xl mx-auto text-left space-y-4 font-bebas text-lg">
-            <li class="flex justify-between border-b border-pink-600 pb-2"><span>Bay Rental (per hour):</span> <span class="font-bold text-pink-400">$40</span></li>
+            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Bay Rental (per hour):</span> <span class="font-bold text-dull-purple">$40</span></li>
           </ul>
         </div>
       </section>
@@ -72,11 +76,11 @@
   <!-- About Us Section -->
       <section id="details" class="py-16 bg-neutral-900">
         <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-pink-400 mb-4 hotrod-shadow">Details</h2>
+          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Details</h2>
           <ul class="max-w-xl mx-auto text-left space-y-4 font-bebas text-lg">
-            <li class="flex justify-between border-b border-pink-600 pb-2"><span>Includes:</span> <span class="text-gray-200">Lift and air compressor</span></li>
-            <li class="flex justify-between border-b border-pink-600 pb-2"><span>Tools:</span> <span class="text-gray-200">You bring your own tools</span></li>
-            <li class="flex justify-between border-b border-pink-600 pb-2"><span>Availability:</span> <span class="text-gray-200">Saturday and Sunday</span></li>
+            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Includes:</span> <span class="text-gray-400">Lift and air compressor</span></li>
+            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Tools:</span> <span class="text-gray-400">You bring your own tools</span></li>
+            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Availability:</span> <span class="text-gray-400">Saturday and Sunday</span></li>
           </ul>
         </div>
       </section>
@@ -84,15 +88,15 @@
   <!-- Contact Us Section -->
       <section id="contact" class="py-16 bg-neutral-950">
         <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-pink-400 mb-4 hotrod-shadow">Contact</h2>
-          <div class="max-w-xl mx-auto font-bebas text-lg text-gray-200">
-            Call or text: <a href="tel:717-503-5255" class="text-pink-400 font-bold">717-503-5255</a>
+          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Contact</h2>
+          <div class="max-w-xl mx-auto font-bebas text-lg text-gray-400">
+            Call or text: <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a>
           </div>
         </div>
       </section>
 
   <!-- Footer -->
-      <footer class="bg-neutral-950 py-6 mt-12 shadow-inner border-t-4 border-pink-600">
+      <footer class="bg-neutral-950 py-6 mt-12 shadow-inner border-t-4 border-dull-purple">
         <div class="container mx-auto px-4 text-center text-gray-400 font-bebas text-lg">
           &copy; 2026 Byler & Sons Garage. All rights reserved.
         </div>
