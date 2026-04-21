@@ -4,104 +4,375 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Byler and Sons Garage</title>
-  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Pacifico (script), Bebas Neue (modern bold) -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Bebas+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     .font-pacifico { font-family: 'Pacifico', cursive; }
-    .font-bebas { font-family: 'Bebas Neue', Arial, sans-serif; letter-spacing: 0.1em; }
+    .font-bebas { font-family: 'Bebas Neue', Arial, sans-serif; letter-spacing: 0.08em; }
     .hotrod-shadow { text-shadow: 0 2px 20px rgba(126, 34, 206, 0.6); }
-    .text-dull-purple { color: #7e22ce; }
-    .border-dull-purple { border-color: #7e22ce; }
-    .bg-accent-red { background-color: #DC2626; }
-    .hover-accent-red:hover { background-color: #B91C1C; }
+    .text-purple { color: #7e22ce; }
+    .border-purple { border-color: #7e22ce; }
+    .bg-red { background-color: #DC2626; }
+    .bg-red:hover { background-color: #B91C1C; }
+
+    aside { width: 220px; min-width: 220px; }
+
+    #home {
+      min-height: 520px;
+      background: url('assets/hero-placeholder.jpg') center center / cover no-repeat;
+      position: relative;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: #1c1c1c;
+      border: 2px solid #7e22ce;
+      overflow: hidden;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: #555;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+    }
+
+    /* Mobile nav overlay */
+    #mobile-nav {
+      display: none;
+      position: fixed; inset: 0; z-index: 40;
+      background: #030712;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    #mobile-nav.open { display: flex; }
   </style>
 </head>
 <body class="bg-neutral-900 text-gray-100">
-  <!-- Sidebar Layout -->
-  <div class="min-h-screen flex flex-row bg-neutral-900">
-    <!-- Sidebar -->
-    <aside class="w-80 bg-neutral-950 flex flex-col items-start py-8 px-6 shadow-2xl min-h-screen border-r-4 border-dull-purple">
+
+  <!-- Mobile Header -->
+  <header class="lg:hidden fixed top-0 left-0 right-0 z-50 bg-neutral-950 border-b-4 border-purple flex items-center justify-between px-4 py-3">
+    <img src="assets/bylerandsons.png" alt="Byler & Sons Garage" class="h-10 w-auto" />
+    <button id="menu-toggle" class="font-bebas text-2xl text-gray-200 hover:text-purple transition-colors focus:outline-none">
+      MENU
+    </button>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div id="mobile-nav">
+    <button id="menu-close" class="absolute top-5 right-5 font-bebas text-2xl text-gray-400 hover:text-purple focus:outline-none">✕ CLOSE</button>
+    <img src="assets/bylerandsons.png" alt="Byler & Sons Garage" class="w-40 mb-4" />
+    <nav>
+      <ul class="flex flex-col items-center space-y-5">
+        <li><a href="#home"          class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">Home</a></li>
+        <li><a href="#how-it-works"  class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">How It Works</a></li>
+        <li><a href="#offer"         class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">What We Offer</a></li>
+        <li><a href="#prices"        class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">Prices & Hours</a></li>
+        <li><a href="#gallery"       class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">Gallery</a></li>
+        <li><a href="#location"      class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">Location</a></li>
+        <li><a href="#faq"           class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">FAQ</a></li>
+        <li><a href="#contact"       class="font-bebas text-2xl hover:text-purple transition-colors mobile-nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mt-6 text-center text-gray-400 font-bebas text-base leading-relaxed">
+      <div>671 Hill Church Road<br>Hummelstown, PA 17036</div>
+      <div class="mt-2"><a href="tel:717-503-5255" class="text-purple">717-503-5255</a></div>
+    </div>
+  </div>
+
+  <!-- Page Wrapper -->
+  <div class="min-h-screen flex flex-col lg:flex-row bg-neutral-900">
+
+    <!-- Desktop Sidebar -->
+    <aside class="hidden lg:flex bg-neutral-950 flex-col items-start py-8 px-5 shadow-2xl min-h-screen border-r-4 border-purple sticky top-0 h-screen">
       <div class="mb-8 w-full flex flex-col items-center">
-        <img src="assets/bylerandsons.png" alt="Byler & Sons Garage Logo" class="max-w-[220px] w-full h-auto drop-shadow-2xl mt-2" />
+        <img src="assets/bylerandsons.png" alt="Byler & Sons Garage Logo" class="w-full h-auto drop-shadow-2xl" />
       </div>
       <nav class="w-full">
-        <ul class="flex flex-col space-y-4 items-start">
-          <li><a href="#home" class="font-bebas text-xl hover:text-dull-purple transition-colors">Home</a></li>
-          <li><a href="#schedule" class="font-bebas text-xl hover:text-dull-purple transition-colors">Schedule Now</a></li>
-          <li><a href="#prices" class="font-bebas text-xl hover:text-dull-purple transition-colors">Prices</a></li>
-          <li><a href="#about" class="font-bebas text-xl hover:text-dull-purple transition-colors">About Us</a></li>
-          <li><a href="#contact" class="font-bebas text-xl hover:text-dull-purple transition-colors">Contact Us</a></li>
+        <ul class="flex flex-col space-y-3 items-start">
+          <li><a href="#home"         class="font-bebas text-lg hover:text-purple transition-colors">Home</a></li>
+          <li><a href="#how-it-works" class="font-bebas text-lg hover:text-purple transition-colors">How It Works</a></li>
+          <li><a href="#offer"        class="font-bebas text-lg hover:text-purple transition-colors">What We Offer</a></li>
+          <li><a href="#prices"       class="font-bebas text-lg hover:text-purple transition-colors">Prices & Hours</a></li>
+          <li><a href="#gallery"      class="font-bebas text-lg hover:text-purple transition-colors">Gallery</a></li>
+          <li><a href="#location"     class="font-bebas text-lg hover:text-purple transition-colors">Location</a></li>
+          <li><a href="#faq"          class="font-bebas text-lg hover:text-purple transition-colors">FAQ</a></li>
+          <li><a href="#contact"      class="font-bebas text-lg hover:text-purple transition-colors">Contact</a></li>
         </ul>
       </nav>
-      <div class="mt-12 text-left text-gray-300 text-sm">
-        <div>671 Hill Church Road<br>Hummelstown, PA 176036</div>
-        <div class="mt-2">Phone: <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a></div>
+      <div class="mt-auto text-left text-gray-400 text-sm font-bebas leading-relaxed">
+        <div>671 Hill Church Road<br>Hummelstown, PA 17036</div>
+        <div class="mt-2">
+          <a href="tel:717-503-5255" class="text-purple">717-503-5255</a>
+        </div>
       </div>
     </aside>
+
     <!-- Main Content -->
-    <main class="flex-1 bg-gradient-to-br from-neutral-900 via-neutral-950 to-purple-950 min-h-screen">
+    <main class="flex-1 min-h-screen pt-16 lg:pt-0">
 
-  <!-- Hero Section -->
-      <section id="home" class="relative h-96 flex items-center justify-center bg-neutral-900 border-b-4 border-dull-purple shadow-xl">
-        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-purple-950 opacity-80"></div>
-        <div class="relative z-10 text-center">
-          <h1 class="text-5xl md:text-6xl font-pacifico hotrod-shadow mb-4 text-dull-purple">Welcome to Byler & Sons Garage</h1>
-          <p class="text-xl md:text-2xl mb-6 text-gray-400 font-bebas tracking-wider">Rent a bay. Work on your project. Simple, affordable, local.</p>
-          <a href="#schedule" class="inline-block bg-accent-red hover-accent-red text-white px-8 py-4 rounded-full shadow-lg font-bebas text-xl tracking-widest transition-all">Schedule Now</a>
+      <!-- Title -->
+      <div class="bg-neutral-900 border-b-2 border-purple py-10 text-center">
+        <h1 class="text-5xl md:text-7xl font-pacifico hotrod-shadow text-purple leading-tight">
+          Byler &amp; Sons Garage
+        </h1>
+      </div>
+
+      <!-- Hero Photo -->
+      <section id="home" class="relative border-b-4 border-purple">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span class="font-bebas text-2xl text-gray-600 tracking-widest">[ HERO PHOTO GOES HERE ]</span>
         </div>
       </section>
 
-  <!-- Schedule Now Section -->
-      <section id="schedule" class="py-16 bg-neutral-900">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Schedule a Bay</h2>
-          <p class="mb-6 font-bebas text-lg">Call us at <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a> to reserve your spot!</p>
-          <!-- Placeholder for future calendar/booking widget -->
-          <div class="mt-8 text-gray-500 italic">Online booking coming soon!</div>
-        </div>
-      </section>
+      <!-- Book a Bay CTA -->
+      <div class="bg-neutral-900 border-b-4 border-purple py-10 text-center">
+        <a href="#contact" class="inline-block bg-red text-white px-12 py-5 rounded-full shadow-lg font-bebas text-2xl tracking-widest transition-all">
+          Book a Bay
+        </a>
+      </div>
 
-  <!-- Prices Section -->
-      <section id="prices" class="py-16 bg-neutral-950">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Prices</h2>
-          <ul class="max-w-xl mx-auto text-left space-y-4 font-bebas text-lg">
-            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Bay Rental (per hour):</span> <span class="font-bold text-dull-purple">$40</span></li>
-          </ul>
-        </div>
-      </section>
+      <!-- How It Works -->
+      <section id="how-it-works" class="py-20 bg-neutral-950 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-12">How It Works</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-  <!-- About Us Section -->
-      <section id="details" class="py-16 bg-neutral-900">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Details</h2>
-          <ul class="max-w-xl mx-auto text-left space-y-4 font-bebas text-lg">
-            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Includes:</span> <span class="text-gray-400">Lift and air compressor</span></li>
-            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Tools:</span> <span class="text-gray-400">You bring your own tools</span></li>
-            <li class="flex justify-between border-b border-dull-purple pb-2"><span>Availability:</span> <span class="text-gray-400">Saturday and Sunday</span></li>
-          </ul>
-        </div>
-      </section>
+            <!-- Step 1: Phone -->
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full border-4 border-purple flex items-center justify-center mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8h10l4 12-6 4c2 4 6 8 10 10l4-6 12 4v10c0 2-2 4-4 4C22 46 18 18 16 12c0-2 0-4 0-4z"/>
+                </svg>
+              </div>
+              <h3 class="font-bebas text-2xl text-gray-100 mb-3">Book Your Bay</h3>
+              <p class="font-bebas text-base text-gray-400">Call or email to reserve your time slot. Appointment only, no walk-ins.</p>
+            </div>
 
-  <!-- Contact Us Section -->
-      <section id="contact" class="py-16 bg-neutral-950">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-4xl font-pacifico text-dull-purple mb-4 hotrod-shadow">Contact</h2>
-          <div class="max-w-xl mx-auto font-bebas text-lg text-gray-400">
-            Call or text: <a href="tel:717-503-5255" class="text-dull-purple font-bold">717-503-5255</a>
+            <!-- Step 2: Wrench -->
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full border-4 border-purple flex items-center justify-center mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M44 10a10 10 0 0 0-12 14L14 42a4 4 0 0 0 0 6l2 2a4 4 0 0 0 6 0l18-18a10 10 0 0 0 14-12l-6 6-4-1-1-4 6-6z"/>
+                </svg>
+              </div>
+              <h3 class="font-bebas text-2xl text-gray-100 mb-3">Come Prepared</h3>
+              <p class="font-bebas text-base text-gray-400">You bring the tools, we have the bay and lift ready.</p>
+            </div>
+
+            <!-- Step 3: Muscle Car -->
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full border-4 border-purple flex items-center justify-center mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7e22ce" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- body -->
+                  <path d="M6 38 C6 38 8 30 14 28 C18 26 22 20 32 19 C40 18 46 20 50 24 L58 28 L58 38 Z"/>
+                  <!-- roof -->
+                  <path d="M18 28 C20 22 26 18 34 18 C42 18 46 22 48 26"/>
+                  <!-- wheels -->
+                  <circle cx="17" cy="39" r="5"/>
+                  <circle cx="47" cy="39" r="5"/>
+                  <!-- ground line -->
+                  <line x1="4" y1="44" x2="60" y2="44"/>
+                  <!-- window -->
+                  <path d="M22 27 C24 22 30 20 36 20 C41 20 44 23 46 26"/>
+                </svg>
+              </div>
+              <h3 class="font-bebas text-2xl text-gray-100 mb-3">Do It Yourself</h3>
+              <p class="font-bebas text-base text-gray-400">Get it done without the shop markup.</p>
+            </div>
+
           </div>
         </div>
       </section>
 
-  <!-- Footer -->
-      <footer class="bg-neutral-950 py-6 mt-12 shadow-inner border-t-4 border-dull-purple">
-        <div class="container mx-auto px-4 text-center text-gray-400 font-bebas text-lg">
-          &copy; 2026 Byler & Sons Garage. All rights reserved.
+      <!-- What We Offer -->
+      <section id="offer" class="py-20 bg-neutral-900 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-6">What We Offer</h2>
+          <p class="font-bebas text-xl text-gray-300 leading-relaxed mb-10">
+            Byler &amp; Sons is a do-it-yourself garage rental in Hummelstown, PA. We give you the space and equipment. You bring the tools and the know-how. Whether you're doing an oil change, a brake job, or a full weekend project, our bays are available on weekends so you can get it done right.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-neutral-950 border border-purple rounded-lg p-6 text-center">
+              <h3 class="font-bebas text-xl text-purple mb-2">Lift Included</h3>
+              <p class="text-gray-400 font-bebas text-base">Full vehicle lift in every bay rental, no extra charge.</p>
+            </div>
+            <div class="bg-neutral-950 border border-purple rounded-lg p-6 text-center">
+              <h3 class="font-bebas text-xl text-purple mb-2">Air Compressor</h3>
+              <p class="text-gray-400 font-bebas text-base">Compressed air available throughout the shop.</p>
+            </div>
+            <div class="bg-neutral-950 border border-purple rounded-lg p-6 text-center">
+              <h3 class="font-bebas text-xl text-purple mb-2">You Bring the Tools</h3>
+              <p class="text-gray-400 font-bebas text-base">BYOT. Bring your own tools and go to work.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prices & Hours -->
+      <section id="prices" class="py-20 bg-neutral-950 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-10 text-center">Prices &amp; Hours</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div>
+              <h3 class="font-bebas text-2xl text-gray-200 mb-4 border-b border-purple pb-2">Pricing</h3>
+              <div class="flex justify-between font-bebas text-lg text-gray-300 py-3 border-b border-neutral-800">
+                <span>Bay Rental (per hour)</span>
+                <span class="text-purple font-bold">$40</span>
+              </div>
+              <p class="font-bebas text-base text-gray-500 mt-4">Lift and air compressor included. 1 hour minimum.</p>
+            </div>
+            <div>
+              <h3 class="font-bebas text-2xl text-gray-200 mb-4 border-b border-purple pb-2">Hours</h3>
+              <div class="flex justify-between font-bebas text-lg text-gray-300 py-3 border-b border-neutral-800">
+                <span>Saturday</span>
+                <span class="text-purple">1:00 PM – 4:00 PM</span>
+              </div>
+              <div class="flex justify-between font-bebas text-lg text-gray-300 py-3 border-b border-neutral-800">
+                <span>Sunday</span>
+                <span class="text-purple">1:00 PM – 4:00 PM</span>
+              </div>
+              <div class="flex justify-between font-bebas text-lg text-gray-300 py-3 border-b border-neutral-800">
+                <span>Monday – Friday</span>
+                <span class="text-gray-600">Closed</span>
+              </div>
+              <p class="font-bebas text-base text-gray-500 mt-4">By appointment only. Call or email to reserve your slot.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="py-20 bg-neutral-900 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-10 text-center">The Garage</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+            <div class="gallery-item"><div class="gallery-placeholder">Photo Coming Soon</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location -->
+      <section id="location" class="py-20 bg-neutral-950 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-4">Find Us</h2>
+          <p class="font-bebas text-lg text-gray-400 mb-8">671 Hill Church Road, Hummelstown, PA 17036</p>
+          <div class="rounded-lg overflow-hidden border-2 border-purple mb-6">
+            <iframe
+              src="https://maps.google.com/maps?q=671+Hill+Church+Road,+Hummelstown,+PA+17036&output=embed"
+              width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"
+              title="Byler and Sons Garage Location">
+            </iframe>
+          </div>
+          <a href="https://maps.google.com/?daddr=671+Hill+Church+Road,+Hummelstown,+PA+17036"
+             target="_blank" rel="noopener"
+             class="inline-block bg-red text-white px-10 py-4 rounded-full shadow-lg font-bebas text-xl tracking-widest transition-all">
+            Get Directions
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-20 bg-neutral-900 border-b-4 border-purple">
+        <div class="max-w-3xl mx-auto px-8">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-10 text-center">FAQ</h2>
+          <div class="space-y-6">
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">Do I need an appointment?</h3>
+              <p class="font-bebas text-base text-gray-400">Yes, we are appointment only. Call or email us to reserve your bay before showing up.</p>
+            </div>
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">What's included with the bay rental?</h3>
+              <p class="font-bebas text-base text-gray-400">Every rental includes access to a vehicle lift and air compressor. That's what we've got. Come prepared with everything else you need.</p>
+            </div>
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">Do I need to bring my own tools?</h3>
+              <p class="font-bebas text-base text-gray-400">Yes. We are a bring-your-own-tools (BYOT) shop. Come loaded up and ready to work.</p>
+            </div>
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">Is there a minimum rental time?</h3>
+              <p class="font-bebas text-base text-gray-400">Yes, there is a 1 hour minimum. Plan your project ahead of time so you can make the most of your bay time.</p>
+            </div>
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">What are your hours?</h3>
+              <p class="font-bebas text-base text-gray-400">We're open Saturday and Sunday, 1:00 PM to 4:00 PM. Closed Monday through Friday.</p>
+            </div>
+
+            <div class="border border-purple rounded-lg p-6">
+              <h3 class="font-bebas text-xl text-gray-100 mb-2">How do I book?</h3>
+              <p class="font-bebas text-base text-gray-400">Call or email us to reserve your slot.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-20 bg-neutral-950 border-b-4 border-purple">
+        <div class="max-w-4xl mx-auto px-8">
+          <h2 class="text-4xl font-pacifico text-purple hotrod-shadow mb-6 text-center">Book a Bay</h2>
+          <p class="font-bebas text-xl text-gray-300 mb-10 text-center">
+            Ready to get to work? Give us a call or shoot us an email to reserve your bay. We're open Saturday and Sunday, 1–4pm.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="tel:717-503-5255"
+               class="flex flex-col items-center justify-center bg-neutral-900 border-2 border-purple rounded-lg py-10 px-6 hover:bg-neutral-800 transition-colors group">
+              <span class="text-4xl mb-3">📞</span>
+              <span class="font-bebas text-2xl text-purple group-hover:text-white transition-colors">Call or Text</span>
+              <span class="font-bebas text-xl text-gray-300 mt-1">717-503-5255</span>
+            </a>
+            <a href="mailto:bylerandsonsgarage@yahoo.com"
+               class="flex flex-col items-center justify-center bg-neutral-900 border-2 border-purple rounded-lg py-10 px-6 hover:bg-neutral-800 transition-colors group">
+              <span class="text-4xl mb-3">✉️</span>
+              <span class="font-bebas text-2xl text-purple group-hover:text-white transition-colors">Email Us</span>
+              <span class="font-bebas text-lg text-gray-300 mt-1 break-all text-center">bylerandsonsgarage@yahoo.com</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-neutral-950 py-6 border-t-4 border-purple">
+        <div class="text-center text-gray-500 font-bebas text-base">
+          &copy; 2026 Byler &amp; Sons Garage | 671 Hill Church Road, Hummelstown, PA 17036
         </div>
       </footer>
+
     </main>
   </div>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const close = document.getElementById('menu-close');
+    const nav = document.getElementById('mobile-nav');
+    const links = document.querySelectorAll('.mobile-nav-link');
+
+    toggle.addEventListener('click', () => nav.classList.add('open'));
+    close.addEventListener('click', () => nav.classList.remove('open'));
+    links.forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+  </script>
+
 </body>
 </html>
